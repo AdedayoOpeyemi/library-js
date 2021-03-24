@@ -24,9 +24,11 @@ class UI {
     ];
     const books = StoredBooks;
 
-    books.forEach((book) => addBookToList(book));
+    books.forEach((book) => UI.addBookToList(book));
+  }
+    
   
-  function addBookToList(book) {
+  static addBookToList(book) {
     const list = document.querySelector('#book-list');
 
     const row = document.createElement('tr');
@@ -40,8 +42,26 @@ class UI {
 
     list.appendChild(row);
   }
-  }
+
 }
 
 // Event: Display Books
 document.addEventListener('DOMContentLoaded', UI.displayBooks);
+
+// Event: Add Book
+document.querySelector("#book-form").addEventListener('submit', (e) => {
+
+  e.preventDefault();
+
+  //Get  values from form
+  const title = document.querySelector('#title').value;
+  const author = document.querySelector('#author').value;
+  const page = document.querySelector('#page').value;
+
+  //Create instance of book
+  const newBook = new Book(title, author, page);
+  // console.log(newBook)
+
+  //Add new instance of Book to List
+  UI.addBookToList(newBook);
+});
