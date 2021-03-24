@@ -27,9 +27,20 @@ myLibrary.forEach(myBook);
 
 
 
+// function myBook(item) {
+//   document.getElementById('card-title').innerHTML = item.title;
+//   document.getElementById('auth').innerHTML = item.author;
+//   document.getElementById('number').innerHTML = item.pages;
+//   document.getElementById('read').innerHTML = item.read;
+// }
+
 function myBook(item) {
-  document.getElementById('card-title').innerHTML = item.title;
-  document.getElementById('auth').innerHTML = item.author;
-  document.getElementById('number').innerHTML = item.pages;
-  document.getElementById('read').innerHTML = item.read;
+  var itm = document.getElementById("card");
+  var cln = itm.cloneNode(true);
+  cln.getElementsByTagName("card-body")[0].document.getElementByTagName('card-title')[0].innerHTML = item.title;
+  cln.getElementById("card-body").document.getElementById('card-title').innerHTML = item.title;
+  cln.getElementById("card-body").document.getElementById('auth').innerHTML = item.author;
+  cln.getElementById("card-body").document.getElementById('number').innerHTML = item.pages;
+  cln.getElementById("card-body").document.getElementById('read').innerHTML = item.read;
+  document.getElementById('card').appendChild(cln);
 }
