@@ -1,3 +1,4 @@
+    
 // Book class: Represents a Book
 class Book {
   constructor(title, author, page) {
@@ -42,7 +43,11 @@ class UI {
 
     list.appendChild(row);
   }
-
+  static removeBook(book) {
+    if (book.classList.contains('delete')) {
+      book.parentElement.parentElement.remove();
+    }
+  }
 }
 
 // Event: Display Books
@@ -65,3 +70,13 @@ document.querySelector("#book-form").addEventListener('submit', (e) => {
   //Add new instance of Book to List
   UI.addBookToList(newBook);
 });
+
+  //Event Delete A Book
+
+  document.querySelector('#book-list').addEventListener('click', (e) => {
+    UI.removeBook(e.target);
+    document.addEventListener('DOMContentLoaded', UI.displayBooks);
+
+  });
+
+
