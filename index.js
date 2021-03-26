@@ -39,16 +39,38 @@ class UI {
       <td class='text-center'>${book.author}</td>
       <td class='text-center'>${book.page}</td>
       <td><a href='#' class='btn btn-danger btn-sm delete'>X</a></td>
+     <td><a href='#'  class='btn btn-danger btn-sm read'></a></td>
     `;
-
     list.appendChild(row);
-  }
+    const bookRead = document.querySelector('.read');
+    bookRead.className = 'btn btn-secondary mr-3';
+    bookRead.addEventListener('click', UI.changeStatus);
+    if (book.read) {
+      bookRead.textContent = 'Read';
+    } else {
+      bookRead.textContent = 'Not Read';
+    }
+   }
+
+
+
+
   static removeBook(book) {
     if (book.classList.contains('delete')) {
       book.parentElement.parentElement.remove();
     }
   }
+
+static changeStatus(e) {
+  if (e.target.textContent === 'Read') {
+    e.target.textContent = 'Not Read';
+  } else {
+    e.target.textContent = 'Read';
+  }
 }
+}
+
+
 
 // Event: Display Books
 document.addEventListener('DOMContentLoaded', UI.displayBooks);
@@ -79,4 +101,15 @@ document.querySelector("#book-form").addEventListener('submit', (e) => {
 
   });
 
+  // let change = document.querySelector('.read');
 
+//  function la(e) {
+//   if (e.target.innerHTML == "read") {
+//     e.target.innerHTML == 'unread'
+//   } 
+//   else if (e.target.innerHTML == 'unread') {
+//     e.target.innerHTML == 'read'
+//   }
+// }
+
+   
